@@ -2,15 +2,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomePageComponent } from './shared/pages/homePage/homePage.component';
+// import { HomePageComponent } from './shared/pages/homePage/homePage.component';
 import { AboutPageComponent } from './shared/pages/about-page/about-page.component';
 import { ContactPageComponent } from './shared/pages/contact-page/contact-page.component';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    component: HomePageComponent
-  },
+  // {
+  //   path: 'home',
+  //   component: HomePageComponent
+  // },
   {
     path: 'about',
     component: AboutPageComponent
@@ -25,7 +25,7 @@ const routes: Routes = [
   },
   {
     path: '**', // Cualquier ruta del path que no sea las anteriores, irá directamente al home
-    redirectTo: 'home'
+    redirectTo: 'contries'
   }
 ];
 

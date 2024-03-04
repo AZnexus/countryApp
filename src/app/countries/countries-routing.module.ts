@@ -22,6 +22,10 @@ const routes: Routes = [
   {
     path: 'by/:id', // /:id <-- Aixo es un argument
     component: CountryPageComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'by-capital'
   }
 ]
 
