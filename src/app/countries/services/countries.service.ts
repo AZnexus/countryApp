@@ -14,11 +14,19 @@ export class CountriesService {
 
   // Els codis de cerca son practicament identics. L'unica diferencia està en una seccio de la url. S'hauria d'unificar
 
+  searchCountryByAlphaCode(term: string): Observable<Country[]> {
+    const url = `${this.apiUrl}/alpha/${term}`;
+    return this.http.get<Country[]>(url)
+    .pipe(
+      catchError(() => of([])) // No es tractarà l'error. Es mostra directament l'error per consola.
+    );
+  }
+
   searchCapital(term: string): Observable<Country[]> {
     const url = `${this.apiUrl}/capital/${term}`;
     return this.http.get<Country[]>(url)
     .pipe(
-      catchError(() => of([])) // No es tractarà l'error. Es mostra directament l'error per consola.
+      catchError(() => of([]))
     );
   }
 
