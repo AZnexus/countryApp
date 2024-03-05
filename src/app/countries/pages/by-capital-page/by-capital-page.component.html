@@ -15,6 +15,11 @@
   <div class="col">
     <!-- Tabla -->
     <hr>
-    Tabla de resultados
+
+    <ul>
+      <li *ngFor="let country of countries">
+        {{ country.capital }} ({{ country.name.common }})
+      </li>
+    </ul>
   </div>
 </div>
