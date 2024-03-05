@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, catchError, of } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 
 import { Country } from '../interfaces/country';
 
@@ -14,12 +14,13 @@ export class CountriesService {
 
   // Els codis de cerca son practicament identics. L'unica diferencia està en una seccio de la url. S'hauria d'unificar
 
-  searchCountryByAlphaCode(term: string): Observable<Country[]> {
-    const url = `${this.apiUrl}/alpha/${term}`;
+  searchCountryByAlphaCode(code: string): Observable<Country | null> {
+    const url = `${this.apiUrl}/alpha/${code}`;
     return this.http.get<Country[]>(url)
-    .pipe(
-      catchError(() => of([])) // No es tractarà l'error. Es mostra directament l'error per consola.
-    );
+      .pipe(
+        map(countries => countries.length > 0 ? countries[0] : null),
+        catchError(() => of(null)) // No es tractarà l'error. Es mostra directament l'error per consola.
+      );
   }
 
   searchCapital(term: string): Observable<Country[]> {
