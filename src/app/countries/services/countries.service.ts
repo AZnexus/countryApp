@@ -10,10 +10,10 @@ export class CountriesService {
 
   private apiUrl: string = 'https://restcountries.com/v3.1';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   searchCapital(term: string): Observable<Country[]> {
     const url = `${this.apiUrl}/capital/${term}`;
-    return this.httpClient.get<Country[]>(url);
+    return this.http.get<Country[]>(url);
   }
 }
