@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-import { CountriesService } from '../../services/countries.service';
 import { Country } from '../../interfaces/country';
+import { CountriesService } from '../../services/countries.service';
 
 @Component({
   selector: 'countries-by-capital-page',
@@ -17,7 +17,6 @@ export class ByCapitalPageComponent {
   searchByCapital(term: string): void {
     this.countriesService.searchCapital(term)
       .subscribe(countries => {
-        console.log(countries); // delete this
         this.countries = countries;
       }); // Si no es posa el subscribe, tota peticio a un Observable no retornarà res.
   }
