@@ -15,6 +15,9 @@ export class SearchBoxComponent implements OnInit, OnDestroy {
   @Input()
   public placeholder: string = ''; // Aixo es un parametre que es podrà fer servir en el HTML
 
+  @Input()
+  public initialValue: string = '';
+
   @Output()
   public onValue = new EventEmitter<string>();
 
